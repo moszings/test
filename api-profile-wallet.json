@@ -433,7 +433,7 @@
         "name": "walletId",
         "in": "query",
         "required": true,
-        "description": "walletId",
+        "description": "Mandatory = Y , walletId",
         "schema": {
           "type": "string"
         }
