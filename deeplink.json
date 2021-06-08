@@ -1,1001 +1,756 @@
-{
-  "openapi": "3.0.0",
-  "info": {
-    "title": "PAOTANG DEEPLINK API",
-    "description": "An example API documentation for a PAOTANG DEEPLINK.\n",
-    "version": "1.0"
-  },
-  "servers": [
-    {
-      "url": "https://api-paotang-dev.th-service.co.in/internal/v1/deeplink"
-    },
-    {
-      "url": "https://api-paotang-dev.th-service.co.in/deeplink"
-    }
-  ],
-  "components": {
-    "examples": {
-      "OAuthContentRequestExample": {
-        "value": {
-          "headerReq": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "reqChannel": "LOTTO"
-          },
-          "content": {
-            "apiKeys": "xy1Gz1kasRNzxWYcPnT5",
-            "secretKey": "xy1Gz1kasRNzxWYcPnT5",
-            "partnerId": "09cbf108-3281-4ace-9d81-f392697ec607"
-          }
-        }
-      },
-      "OAuthContentResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "0000",
-            "statusDesc": "Success"
-          },
-          "content": {
-            "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-            "expireAt": 1618889112,
-            "expireIn": 1618889112
-          }
-        }
-      },
-      "GetPaotangDeeplinkContentRequestExample": {
-        "value": {
-          "headerReq": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "GetPaotangDeeplinkService",
-            "reqChannel": "LOTTO"
-          },
-          "content": {
-            "deeplinkPartnerUrl": "lottouat://lotto.co.th/lotto.register"
-          }
-        }
-      },
-      "GetPaotangDeeplinkContentResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "GetPaotangDeeplinkService",
-            "statusCd": "0000",
-            "statusDesc": "Success"
-          },
-          "content": {
-            "deeplinkPaotangUrl": "paotanguat://paotang.co.th/register?token1=xxxxxx",
-            "expireAt": 999999999,
-            "expireIn": 99999999
-          }
-        }
-      },
-      "GetPartnerDeeplinkContentRequestExample": {
-        "value": {
-          "headerReq": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "GetPaotangDeeplinkService",
-            "reqChannel": "LOTTO"
-          },
-          "content": {
-            "token1": "xy1Gz1kasRNzxWYcPnT5",
-            "cifId": "122212939393"
-          }
-        }
-      },
-      "GetPartnerDeeplinkContentResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "GetPaotangDeeplinkService",
-            "statusCd": "0000",
-            "statusDesc": "Success"
-          },
-          "content": {
-            "deeplinkPartnerUrl": "paotanguat://lotto.co.th/next.register?token2=xy1Gz1kasRNzxWYcPnT5"
-          }
-        }
-      },
-      "GetInfoContentRequestExample": {
-        "value": {
-          "headerReq": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "GetPaotangDeeplinkService",
-            "reqChannel": "LOTTO"
-          },
-          "content": {
-            "token1": "xxexxy1Gz1kasRNzxWYcPnT5",
-            "token2": "ddsfGz1kasRNzxWYcPnT5"
-          }
-        }
-      },
-      "GetInfoContentResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "GetPaotangDeeplinkService",
-            "reqChannel": "LOTTO"
-          },
-          "content": {
-            "userProfile": {
-              "cifId": "2133939393",
-              "consumerId": "0811111111",
-              "consumerNameTh": "ฉัตรณรงค์ แก้วกริชกร",
-              "consumerNameEn": "Test",
-              "consumerMobile": "0811111111",
-              "identifier": "1561234567",
-              "identifierType": "CID",
-              "customerHashId": "MVR4Tk44UnZDQlQzUXNDTGhzOU5QVGFjZXcxajhJRUZGbFBxUGF6aytNZz0=",
-              "status": "REGISTERED",
-              "active": "Y",
-              "kycLevel": "LEVEL2",
-              "consumerLatitude": 0,
-              "consumerLongitude": 0,
-              "qrAliasName": "",
-              "qrAmtLmtVerPin": "N",
-              "qrEnableAmtLmtVerPin": "N",
-              "qrEnableAmtLmtPerDay": "N"
-            },
-            "sourceOfFunds": [
-              {
-                "cifId": "012130101010",
-                "sofNo": "006880000000",
-                "sofType": "AC",
-                "sofName": "ชื่อบัญชี",
-                "sofDisplay": "ื่อบัญชี",
-                "sofAlias": "ื่อบัญชี",
-                "sofBankcode": "006",
-                "sofIsActive": "Y",
-                "sofCifId": "012130101010",
-                "sofIdentification": "156010011111",
-                "opt1": "",
-                "opt2": "",
-                "opt3": "",
-                "opt4": "",
-                "opt5": ""
-              }
-            ]
-          }
-        }
-      },
-      "PartnerNotRegisterResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0001",
-            "statusDesc": "Partner not register"
-          },
-          "content": null
-        }
-      },
-      "AccessTokenInvalidResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0002",
-            "statusDesc": "Access_token is Invalid"
-          },
-          "content": null
-        }
-      },
-      "AccessTokenExpiredResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0003",
-            "statusDesc": "Access_token is Expired"
-          },
-          "content": null
-        }
-      },
-      "TransactionExpiredResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0004",
-            "statusDesc": "Transaction is Expired"
-          },
-          "content": null
-        }
-      },
-      "KYCLowerResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0005",
-            "statusDesc": "KYC level Lower than the profile require"
-          },
-          "content": null
-        }
-      },
-      "AccessTokenMissmatchResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0006",
-            "statusDesc": "access_token partner is mismatch"
-          },
-          "content": null
-        }
-      },
-      "PartnerProfileMissmatchResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0007",
-            "statusDesc": "partner profile mismatch"
-          },
-          "content": null
-        }
-      },
-      "SourceOfFundNotFoundResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0008",
-            "statusDesc": "source_of_fund partner require not found"
-          },
-          "content": null
-        }
-      },
-      "DeeplinkPartnerNotMatchResponseExample": {
-        "value": {
-          "headerResp": {
-            "reqID": "xy1Gz1kasRNzxWYcPnT5",
-            "reqBy": "0852333531",
-            "reqDtm": "2021-04-08 16:18:07.153",
-            "service": "OAuthService",
-            "statusCd": "DEEP0009",
-            "statusDesc": "deeplink partner is not match"
-          },
-          "content": null
-        }
-      }
-    },
-    "schemas": {
-      "BaseHeaderRequest": {
-        "type": "object",
-        "properties": {
-          "reqID": {
-            "type": "string",
-            "example": "",
-            "description": "",
-            "nullable": true
-          },
-          "reqChannel": {
-            "type": "string",
-            "example": "",
-            "description": "",
-            "nullable": true
-          },
-          "reqDtm": {
-            "type": "string",
-            "example": "",
-            "description": "",
-            "nullable": true
-          },
-          "reqBy": {
-            "type": "string",
-            "example": "",
-            "description": "",
-            "nullable": true
-          },
-          "service": {
-            "type": "string",
-            "example": "",
-            "description": "",
-            "nullable": true
-          }
-        }
-      },
-      "BaseHeaderResponse": {
-        "type": "object",
-        "properties": {
-          "reqID": {
-            "type": "string",
-            "example": "",
-            "description": ""
-          },
-          "reqBy": {
-            "type": "string",
-            "example": "",
-            "description": ""
-          },
-          "reqDtm": {
-            "type": "string",
-            "example": "",
-            "description": ""
-          },
-          "service": {
-            "type": "string",
-            "example": "",
-            "description": ""
-          },
-          "statusCd": {
-            "type": "string",
-            "example": "0000",
-            "description": "0000 = success , DEEP9999 = fail"
-          },
-          "statusDesc": {
-            "type": "string",
-            "example": "Success",
-            "description": "Success"
-          }
-        }
-      },
-      "OAuthContentRequest": {
-        "type": "object",
-        "properties": {
-          "apiKeys": {
-            "type": "string",
-            "example": "LMkQMnVQL9"
-          },
-          "secretKey": {
-            "type": "string",
-            "example": "bj0UGL74gsc6MUKyQ2h2"
-          },
-          "partnerId": {
-            "type": "string",
-            "example": "09cbf108-3281-4ace-9d81-f392697ec607"
-          }
-        }
-      },
-      "OAuthContentResponse": {
-        "properties": {
-          "accessToken": {
-            "type": "string",
-            "example": "token เพื่อใช้ใน การ deeplink"
-          },
-          "expireAt": {
-            "type": "string",
-            "example": "timestamp เวลาหมดอายุของ(min) token"
-          },
-          "expireIn": {
-            "type": "string",
-            "example": "timestamp เหลือเวลาอีก (min) หมดอายุของ token"
-          }
-        }
-      },
-      "GetPaotangDeeplinkContentRequest": {
-        "type": "object",
-        "properties": {
-          "deeplinkPartnerUrl": {
-            "type": "string",
-            "example": "lottouat://lotto.co.th/register"
-          }
-        }
-      },
-      "GetPaotangDeeplinkContentResponse": {
-        "type": "object",
-        "properties": {
-          "deeplinkPaotangUrl": {
-            "type": "string",
-            "example": "paotanguat://paotang.co.th/paotang.register?token1=xxxxx"
-          },
-          "expireAt": {
-            "type": "integer",
-            "example": 999999999
-          },
-          "expireIn": {
-            "type": "integer",
-            "example": 999999999
-          }
-        }
-      },
-      "GetPartnerDeeplinkContentRequest": {
-        "type": "object",
-        "properties": {
-          "token1": {
-            "type": "string",
-            "example": "xy1Gz1kasRNzxWYcPnT5"
-          },
-          "cifId": {
-            "type": "string",
-            "example": "122212939393"
-          }
-        }
-      },
-      "GetPartnerDeeplinkContentResponse": {
-        "type": "object",
-        "properties": {
-          "deeplinkPartnerUrl": {
-            "type": "string",
-            "example": "lottouat://lotto.co.th/paotang.register?token2=xxxxxx"
-          }
-        }
-      },
-      "GetInfoContentRequest": {
-        "type": "object",
-        "properties": {
-          "token1": {
-            "type": "string",
-            "example": "xy1Gz1kasRNzxWYcPnT5"
-          },
-          "token2": {
-            "type": "string",
-            "example": "xy1Gz1kasRNzxWYcPnT5"
-          }
-        }
-      },
-      "GetInfoContentResponse": {
-        "type": "object",
-        "properties": {
-          "userProfile": {
-            "type": "object",
-            "properties": {
-              "cifId": {
-                "type": "string",
-                "example": "2133939393",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "consumerId": {
-                "type": "string",
-                "example": "0811111111",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "consumerNameTh": {
-                "type": "string",
-                "example": "ฉัตรณรงค์ แก้วกริชกร",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "consumerNameEn": {
-                "type": "string",
-                "example": "Test",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "consumerMobile": {
-                "example": "Test",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "identifier": {
-                "example": "1561234567",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "identifierType": {
-                "example": "CID",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "customerHashId": {
-                "example": "MVR4Tk44UnZDQlQzUXNDTGhzOU5QVGFjZXcxajhJRUZGbFBxUGF6aytNZz0=",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "status": {
-                "example": "REGISTERED",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "active": {
-                "example": "Y",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "kycLevel": {
-                "example": "LEVEL2",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "consumerLatitude": {
-                "example": 0,
-                "type": "integer",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "consumerLongitude": {
-                "example": 0,
-                "type": "integer",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "qrAliasName": {
-                "example": "",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "qrAmtLmtVerPin": {
-                "example": "N",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "qrEnableAmtLmtVerPin": {
-                "example": "N",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              },
-              "qrEnableAmtLmtPerDay": {
-                "example": "N",
-                "type": "string",
-                "nullable": true,
-                "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-              }
-            }
-          },
-          "sourceOfFunds": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "cifId": {
-                  "example": "",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "sofNo": {
-                  "example": "00688xxxxxxxx",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "sofType": {
-                  "example": "AC",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "sofName": {
-                  "example": "ชื่อบัญชี",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "sofDisplay": {
-                  "example": "ชื่อบัญชี",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "sofAlias": {
-                  "example": "ชื่อบัญชี",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "sofBankcode": {
-                  "example": "006",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "sofIsActive": {
-                  "example": "Y"
-                },
-                "sofCifId": {
-                  "example": "1212121212",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "sofIdentification": {
-                  "example": "1560100111111",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "opt1": {
-                  "example": "",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "opt2": {
-                  "example": "",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "opt3": {
-                  "example": "",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "opt4": {
-                  "example": "",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                },
-                "opt5": {
-                  "example": "",
-                  "type": "string",
-                  "nullable": true,
-                  "description": "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
-                }
-              }
-            }
-          }
-        }
-      },
-      "OAuthRequest": {
-        "type": "object",
-        "properties": {
-          "headerResp": {
-            "$ref": "#/components/schemas/BaseHeaderRequest"
-          },
-          "content": {
-            "$ref": "#/components/schemas/OAuthContentRequest"
-          }
-        }
-      },
-      "OAuthResponse": {
-        "type": "object",
-        "properties": {
-          "headerResp": {
-            "$ref": "#/components/schemas/BaseHeaderResponse"
-          },
-          "content": {
-            "$ref": "#/components/schemas/OAuthContentResponse"
-          }
-        }
-      },
-      "GetPaotangDeeplinkRequest": {
-        "type": "object",
-        "properties": {
-          "headerResp": {
-            "$ref": "#/components/schemas/BaseHeaderRequest"
-          },
-          "content": {
-            "$ref": "#/components/schemas/GetPaotangDeeplinkContentRequest"
-          }
-        }
-      },
-      "GetPaotangDeeplinkResponse": {
-        "type": "object",
-        "properties": {
-          "headerResp": {
-            "$ref": "#/components/schemas/BaseHeaderRequest"
-          },
-          "content": {
-            "$ref": "#/components/schemas/GetPaotangDeeplinkContentResponse"
-          }
-        }
-      },
-      "GetPartnerDeeplinkRequest": {
-        "type": "object",
-        "properties": {
-          "headerResp": {
-            "$ref": "#/components/schemas/BaseHeaderRequest"
-          },
-          "content": {
-            "$ref": "#/components/schemas/GetPartnerDeeplinkContentRequest"
-          }
-        }
-      },
-      "GetPartnerDeeplinkResponse": {
-        "type": "object",
-        "properties": {
-          "headerResp": {
-            "$ref": "#/components/schemas/BaseHeaderRequest"
-          },
-          "content": {
-            "$ref": "#/components/schemas/GetPartnerDeeplinkContentResponse"
-          }
-        }
-      },
-      "GetInfoRequest": {
-        "type": "object",
-        "properties": {
-          "headerResp": {
-            "$ref": "#/components/schemas/BaseHeaderRequest"
-          },
-          "content": {
-            "$ref": "#/components/schemas/GetInfoContentRequest"
-          }
-        }
-      },
-      "GetInfoResponse": {
-        "type": "object",
-        "properties": {
-          "headerResp": {
-            "$ref": "#/components/schemas/BaseHeaderRequest"
-          },
-          "content": {
-            "$ref": "#/components/schemas/GetInfoContentResponse"
-          }
-        }
-      }
-    },
-    "responses": {
-      "error": {
-        "description": "ERROR",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "description": "Describes the error in a human-readable format.",
-                  "type": "string",
-                  "example": "Permission denied."
-                }
-              }
-            }
-          }
-        }
-      },
-      "success": null
-    },
-    "parameters": {
-      "authorization": {
-        "name": "Authorization",
-        "in": "header",
-        "description": "access_token ที่ได้จาก OAuth",
-        "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-        "schema": {
-          "type": "string"
-        },
-        "required": true
-      }
-    }
-  },
-  "paths": {
-    "/oauth/token": {
-      "post": {
-        "tags": [
-          "OAuth"
-        ],
-        "summary": "OAuth",
-        "description": "OAuth",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "examples": {
-                "successful": {
-                  "$ref": "#/components/examples/OAuthContentRequestExample"
-                }
-              },
-              "schema": {
-                "$ref": "#/components/schemas/OAuthRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/OAuthResponse"
-                },
-                "examples": {
-                  "successful": {
-                    "$ref": "#/components/examples/OAuthContentResponseExample"
-                  },
-                  "partnerNotRegister": {
-                    "$ref": "#/components/examples/PartnerNotRegisterResponseExample"
-                  },
-                  "partnerProfileMissmatch": {
-                    "$ref": "#/components/examples/PartnerProfileMissmatchResponseExample"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/paotang-get": {
-      "post": {
-        "tags": [
-          "GetPaotangDeeplink"
-        ],
-        "summary": "GetPaotangDeeplink",
-        "description": "GetPaotangDeeplink",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/authorization"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "examples": {
-                "successful": {
-                  "$ref": "#/components/examples/GetPaotangDeeplinkContentRequestExample"
-                }
-              },
-              "schema": {
-                "$ref": "#/components/schemas/GetPaotangDeeplinkRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetPaotangDeeplinkResponse"
-                },
-                "examples": {
-                  "successful": {
-                    "$ref": "#/components/examples/GetPaotangDeeplinkContentResponseExample"
-                  },
-                  "accessTokenInvalid": {
-                    "$ref": "#/components/examples/AccessTokenInvalidResponseExample"
-                  },
-                  "accessTokenExpired": {
-                    "$ref": "#/components/examples/AccessTokenExpiredResponseExample"
-                  },
-                  "deeplinkPartnerNotMatch": {
-                    "$ref": "#/components/examples/DeeplinkPartnerNotMatchResponseExample"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/partner-get": {
-      "post": {
-        "tags": [
-          "GetPartnerDeeplink"
-        ],
-        "summary": "GetPartnerDeeplink",
-        "description": "GetPartnerDeeplink",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "examples": {
-                "successful": {
-                  "$ref": "#/components/examples/GetPartnerDeeplinkContentRequestExample"
-                }
-              },
-              "schema": {
-                "$ref": "#/components/schemas/GetPartnerDeeplinkRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetPartnerDeeplinkResponse"
-                },
-                "examples": {
-                  "successful": {
-                    "$ref": "#/components/examples/GetPartnerDeeplinkContentResponseExample"
-                  },
-                  "accessTokenInvalid": {
-                    "$ref": "#/components/examples/AccessTokenInvalidResponseExample"
-                  },
-                  "accessTokenExpired": {
-                    "$ref": "#/components/examples/AccessTokenExpiredResponseExample"
-                  },
-                  "kycLower": {
-                    "$ref": "#/components/examples/KYCLowerResponseExample"
-                  },
-                  "sourceOfFundNotFound": {
-                    "$ref": "#/components/examples/SourceOfFundNotFoundResponseExample"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/information-get": {
-      "post": {
-        "tags": [
-          "GetInfomation"
-        ],
-        "summary": "GetInfomation",
-        "description": "GetInfomation",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/authorization"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "examples": {
-                "successful": {
-                  "$ref": "#/components/examples/GetInfoContentRequestExample"
-                }
-              },
-              "schema": {
-                "$ref": "#/components/schemas/GetInfoRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetInfoResponse"
-                },
-                "examples": {
-                  "successful": {
-                    "$ref": "#/components/examples/GetInfoContentResponseExample"
-                  },
-                  "accessTokenInvalid": {
-                    "$ref": "#/components/examples/AccessTokenInvalidResponseExample"
-                  },
-                  "accessTokenExpired": {
-                    "$ref": "#/components/examples/AccessTokenExpiredResponseExample"
-                  },
-                  "accessTokenMissmatch": {
-                    "$ref": "#/components/examples/AccessTokenMissmatchResponseExample"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+openapi: 3.0.0
+info:
+  title: PAOTANG DEEPLINK API
+  description: |
+    An example API documentation for a PAOTANG DEEPLINK.
+  version: "1.0"
+servers:
+  - url: 'https://api-paotang-dev.th-service.co.in/internal/v1/deeplink'
+  - url: 'https://api-paotang-dev.th-service.co.in/deeplink'
+components:
+  examples:
+    OAuthContentRequestExample:
+      value:
+        headerReq:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          reqChannel: "LOTTO"
+        content:
+            apiKeys: "xy1Gz1kasRNzxWYcPnT5"
+            secretKey: "xy1Gz1kasRNzxWYcPnT5"
+            partnerId: "09cbf108-3281-4ace-9d81-f392697ec607"
+
+    OAuthContentResponseExample:
+      value:
+        headerResp:
+          reqID : "xy1Gz1kasRNzxWYcPnT5"
+          reqBy : "0852333531"
+          reqDtm : "2021-04-08 16:18:07.153"
+          service : "OAuthService"
+          statusCd : "0000"
+          statusDesc: "Success"
+        content:
+          accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          expireAt: 1618889112
+          expireIn: 1618889112
+
+
+
+    GetPaotangDeeplinkContentRequestExample:
+      value:
+        headerReq:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "GetPaotangDeeplinkService"
+          reqChannel: "LOTTO"
+        content:
+          deeplinkPartnerUrl: "lottouat://lotto.co.th/lotto.register"
+
+    GetPaotangDeeplinkContentResponseExample:
+      value:
+        headerResp:
+          reqID : "xy1Gz1kasRNzxWYcPnT5"
+          reqBy : "0852333531"
+          reqDtm : "2021-04-08 16:18:07.153"
+          service : "GetPaotangDeeplinkService"
+          statusCd : "0000"
+          statusDesc: "Success"
+        content:
+          deeplinkPaotangUrl: "paotanguat://paotang.co.th/register?token1=xxxxxx"
+          expireAt: 999999999
+          expireIn: 99999999
+    GetPartnerDeeplinkContentRequestExample:
+      value:
+        headerReq:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "GetPaotangDeeplinkService"
+          reqChannel: "LOTTO"
+        content:
+          token1: "xy1Gz1kasRNzxWYcPnT5"
+          cifId: "122212939393"
+
+    GetPartnerDeeplinkContentResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "GetPaotangDeeplinkService"
+          statusCd: "0000"
+          statusDesc: "Success"
+        content:
+          deeplinkPartnerUrl: "paotanguat://lotto.co.th/next.register?token2=xy1Gz1kasRNzxWYcPnT5"
+
+    GetInfoContentRequestExample:
+      value:
+        headerReq:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "GetPaotangDeeplinkService"
+          reqChannel: "LOTTO"
+        content:
+          token1: "xxexxy1Gz1kasRNzxWYcPnT5"
+          token2: "ddsfGz1kasRNzxWYcPnT5"
+
+    GetInfoContentResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "GetPaotangDeeplinkService"
+          reqChannel: "LOTTO"
+        content:
+          userProfile:
+            cifId: "2133939393"
+            consumerId: "0811111111"
+            consumerNameTh: "ฉัตรณรงค์ แก้วกริชกร"
+            consumerNameEn: "Test"
+            consumerMobile: "0811111111"
+            identifier: "1561234567"
+            identifierType: "CID"
+            customerHashId: "MVR4Tk44UnZDQlQzUXNDTGhzOU5QVGFjZXcxajhJRUZGbFBxUGF6aytNZz0="
+            status: "REGISTERED"
+            active: "Y"
+            kycLevel: "LEVEL2"
+            consumerLatitude: 0.000000
+            consumerLongitude: 0.000000
+            qrAliasName: ""
+            qrAmtLmtVerPin: "N"
+            qrEnableAmtLmtVerPin: "N"
+            qrEnableAmtLmtPerDay: "N"
+          sourceOfFunds:
+            - cifId: "012130101010"
+              sofNo: "006880000000"
+              sofType: "AC"
+              sofName: "ชื่อบัญชี"
+              sofDisplay: "ื่อบัญชี"
+              sofAlias: "ื่อบัญชี"
+              sofBankcode: "006"
+              sofIsActive: "Y"
+              sofCifId: "012130101010"
+              sofIdentification: "156010011111"
+              opt1: ""
+              opt2: ""
+              opt3: ""
+              opt4: ""
+              opt5: ""
+
+    PartnerNotRegisterResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0001"
+          statusDesc: "Partner not register"
+        content: null
+    AccessTokenInvalidResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0002"
+          statusDesc: "Access_token is Invalid"
+        content: null
+    AccessTokenExpiredResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0003"
+          statusDesc: "Access_token is Expired"
+        content: null
+    TransactionExpiredResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0004"
+          statusDesc: "Transaction is Expired"
+        content: null
+    KYCLowerResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0005"
+          statusDesc: "KYC level Lower than the profile require"
+        content: null
+    AccessTokenMissmatchResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0006"
+          statusDesc: "access_token partner is mismatch"
+        content: null
+    PartnerProfileMissmatchResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0007"
+          statusDesc: "partner profile mismatch"
+        content: null
+    
+    SourceOfFundNotFoundResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0008"
+          statusDesc: "source_of_fund partner require not found"
+        content: null
+    DeeplinkPartnerNotMatchResponseExample:
+      value:
+        headerResp:
+          reqID: "xy1Gz1kasRNzxWYcPnT5"
+          reqBy: "0852333531"
+          reqDtm: "2021-04-08 16:18:07.153"
+          service: "OAuthService"
+          statusCd: "DEEP0009"
+          statusDesc: "deeplink partner is not match"
+        content: null
+
+  schemas:
+    BaseHeaderRequest:
+      type: object
+      properties:
+        reqID:
+          type: string
+          example: ''
+          description: 'Mandatory = Y Test'
+          nullable: true
+        reqChannel:
+          type: string
+          example: ''
+          description: ''
+          nullable: true
+        reqDtm:
+          type: string
+          example: ''
+          description: ''
+          nullable: true
+        reqBy:
+          type: string
+          example: ''
+          description: ''
+          nullable: true
+        service:
+          type: string
+          example: ''
+          description: ''
+          nullable: true
+    BaseHeaderResponse:
+      type: object
+      properties:
+        reqID:
+          type: string
+          example: ''
+          description: ''
+        reqBy:
+          type: string
+          example: ''
+          description: ''
+        reqDtm:
+          type: string
+          example: ''
+          description: ''
+        service:
+          type: string
+          example: ''
+          description: ''
+        statusCd:
+          type: string
+          example: '0000'
+          description: '0000 = success , DEEP9999 = fail'
+        statusDesc:
+          type: string
+          example: 'Success'
+          description: 'Success'
+    OAuthContentRequest:
+      type: object
+      properties:
+        apiKeys:
+          type: string
+          example: "LMkQMnVQL9"
+        secretKey:
+          type: string
+          example: "bj0UGL74gsc6MUKyQ2h2"
+        partnerId:
+          type: string
+          example: "09cbf108-3281-4ace-9d81-f392697ec607"
+    OAuthContentResponse:
+        properties:
+          accessToken:
+            type: string
+            example: "token เพื่อใช้ใน การ deeplink"
+          expireAt:
+            type: string
+            example: "timestamp เวลาหมดอายุของ(min) token"
+          expireIn:
+            type: string
+            example: "timestamp เหลือเวลาอีก (min) หมดอายุของ token"
+
+
+    GetPaotangDeeplinkContentRequest:
+      type: object
+      properties:
+        deeplinkPartnerUrl:
+          type: string
+          example: "lottouat://lotto.co.th/register"
+
+    GetPaotangDeeplinkContentResponse:
+      type: object
+      properties:
+        deeplinkPaotangUrl:
+          type: string
+          example: "paotanguat://paotang.co.th/paotang.register?token1=xxxxx"
+        expireAt:
+          type: integer
+          example: 999999999
+        expireIn:
+          type: integer
+          example: 999999999
+
+    GetPartnerDeeplinkContentRequest:
+      type: object
+      properties:
+        token1:
+          type: string
+          example: "xy1Gz1kasRNzxWYcPnT5"
+        cifId:
+          type: string
+          example: "122212939393"
+
+    GetPartnerDeeplinkContentResponse:
+      type: object
+      properties:
+        deeplinkPartnerUrl:
+          type: string
+          example: "lottouat://lotto.co.th/paotang.register?token2=xxxxxx"
+
+
+    GetInfoContentRequest:
+      type: object
+      properties:
+        token1:
+          type: string
+          example: "xy1Gz1kasRNzxWYcPnT5"
+        token2:
+          type: string
+          example: "xy1Gz1kasRNzxWYcPnT5"
+
+    GetInfoContentResponse:
+      type: object
+      properties:
+        userProfile:
+          type: object
+          properties:
+            cifId:
+              type: string
+              example: "2133939393"
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            consumerId:
+              type: string
+              example: "0811111111"
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            consumerNameTh:
+              type: string
+              example: "ฉัตรณรงค์ แก้วกริชกร"
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            consumerNameEn:
+              type: string
+              example: "Test"
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            consumerMobile:
+              example: "Test"
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            identifier:
+              example: "1561234567"
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            identifierType:
+              example: "CID"
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            customerHashId:
+              example: "MVR4Tk44UnZDQlQzUXNDTGhzOU5QVGFjZXcxajhJRUZGbFBxUGF6aytNZz0="
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            status:
+              example: "REGISTERED"
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            active:
+              example: "Y"
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            kycLevel:
+              example: "LEVEL2"
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            consumerLatitude:
+              example: 0.000000
+              type: integer
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            consumerLongitude:
+              example: 0.000000
+              type: integer
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            qrAliasName:
+              example: ""
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            qrAmtLmtVerPin:
+              example: "N"
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            qrEnableAmtLmtVerPin:
+              example: "N"
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+            qrEnableAmtLmtPerDay:
+              example: "N"
+              type: string
+              nullable: true
+              description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+        sourceOfFunds:
+            type: array
+            items:
+              type: object
+              properties:
+                cifId:
+                  example: ""
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                sofNo:
+                  example: "00688xxxxxxxx"
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                sofType:
+                  example: "AC"
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                sofName:
+                  example: "ชื่อบัญชี"
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                sofDisplay:
+                  example: "ชื่อบัญชี"
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                sofAlias:
+                  example: "ชื่อบัญชี"
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                sofBankcode:
+                  example: "006"
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                sofIsActive:
+                  example: "Y"
+                sofCifId:
+                  example: "1212121212"
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                sofIdentification:
+                  example: "1560100111111"
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                opt1:
+                  example: ""
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                opt2:
+                  example: ""
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                opt3:
+                  example: ""
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                opt4:
+                  example: ""
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+                opt5:
+                  example: ""
+                  type: string
+                  nullable: true
+                  description: "จะมีฟิลด์ ก็ต่อเมื่อ config partner profile ที่ paotang"
+
+
+
+    OAuthRequest:
+      type : object
+      properties:
+        headerResp:
+          $ref: '#/components/schemas/BaseHeaderRequest'
+        content:
+          $ref: '#/components/schemas/OAuthContentRequest'
+    OAuthResponse:
+      type : object
+      properties:
+        headerResp:
+          $ref: '#/components/schemas/BaseHeaderResponse'
+        content:
+          $ref: '#/components/schemas/OAuthContentResponse'
+    GetPaotangDeeplinkRequest:
+      type : object
+      properties:
+        headerResp:
+          $ref: '#/components/schemas/BaseHeaderRequest'
+        content:
+          $ref: '#/components/schemas/GetPaotangDeeplinkContentRequest'
+    GetPaotangDeeplinkResponse:
+      type: object
+      properties:
+        headerResp:
+          $ref: '#/components/schemas/BaseHeaderRequest'
+        content:
+          $ref: '#/components/schemas/GetPaotangDeeplinkContentResponse'
+    GetPartnerDeeplinkRequest:
+      type: object
+      properties:
+        headerResp:
+          $ref: '#/components/schemas/BaseHeaderRequest'
+        content:
+          $ref: '#/components/schemas/GetPartnerDeeplinkContentRequest'
+    GetPartnerDeeplinkResponse:
+      type: object
+      properties:
+        headerResp:
+          $ref: '#/components/schemas/BaseHeaderRequest'
+        content:
+          $ref: '#/components/schemas/GetPartnerDeeplinkContentResponse'
+    GetInfoRequest:
+      type: object
+      properties:
+        headerResp:
+          $ref: '#/components/schemas/BaseHeaderRequest'
+        content:
+          $ref: '#/components/schemas/GetInfoContentRequest'
+    GetInfoResponse:
+      type: object
+      properties:
+        headerResp:
+          $ref: '#/components/schemas/BaseHeaderRequest'
+        content:
+          $ref: '#/components/schemas/GetInfoContentResponse'
+
+
+
+
+
+  responses:
+    error:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                description: Describes the error in a human-readable format.
+                type: string
+                example: Permission denied.
+    success:
+
+  parameters:
+    authorization:
+      name: Authorization
+      in: header
+      description: access_token ที่ได้จาก OAuth
+      example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+      schema:
+        type: string
+      required: true
+paths:
+  /oauth/token:
+    post:
+      tags:
+        - OAuth
+      summary: OAuth
+      description: OAuth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              successful:
+                $ref: "#/components/examples/OAuthContentRequestExample"
+            schema:
+              $ref: '#/components/schemas/OAuthRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref : "#/components/schemas/OAuthResponse"
+              examples:
+                successful:
+                  $ref: "#/components/examples/OAuthContentResponseExample"
+                partnerNotRegister:
+                  $ref: "#/components/examples/PartnerNotRegisterResponseExample"
+                partnerProfileMissmatch:
+                  $ref: "#/components/examples/PartnerProfileMissmatchResponseExample"
+                  
+
+  /paotang-get:
+    post:
+      tags:
+        - GetPaotangDeeplink
+      summary: GetPaotangDeeplink
+      description: GetPaotangDeeplink
+      parameters:
+        - $ref: '#/components/parameters/authorization'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              successful:
+                $ref: "#/components/examples/GetPaotangDeeplinkContentRequestExample"
+            schema:
+              $ref: '#/components/schemas/GetPaotangDeeplinkRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPaotangDeeplinkResponse"
+              examples:
+                successful:
+                  $ref: "#/components/examples/GetPaotangDeeplinkContentResponseExample"
+                accessTokenInvalid:
+                  $ref: "#/components/examples/AccessTokenInvalidResponseExample"
+                accessTokenExpired:
+                  $ref: "#/components/examples/AccessTokenExpiredResponseExample"
+                deeplinkPartnerNotMatch:
+                  $ref: "#/components/examples/DeeplinkPartnerNotMatchResponseExample"
+                  
+
+
+  /partner-get:
+    post:
+      tags:
+        - GetPartnerDeeplink
+      summary: GetPartnerDeeplink
+      description: GetPartnerDeeplink
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              successful:
+                $ref: "#/components/examples/GetPartnerDeeplinkContentRequestExample"
+            schema:
+              $ref: '#/components/schemas/GetPartnerDeeplinkRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPartnerDeeplinkResponse"
+              examples:
+                successful:
+                  $ref: "#/components/examples/GetPartnerDeeplinkContentResponseExample"
+                accessTokenInvalid:
+                  $ref: "#/components/examples/AccessTokenInvalidResponseExample"
+                accessTokenExpired:
+                  $ref: "#/components/examples/AccessTokenExpiredResponseExample"
+                kycLower:
+                  $ref: "#/components/examples/KYCLowerResponseExample"
+                sourceOfFundNotFound:
+                  $ref: "#/components/examples/SourceOfFundNotFoundResponseExample"
+                
+
+  /information-get:
+    post:
+      tags:
+        - GetInfomation
+      summary: GetInfomation
+      description: GetInfomation
+      parameters:
+        - $ref: '#/components/parameters/authorization'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              successful:
+                $ref: "#/components/examples/GetInfoContentRequestExample"
+            schema:
+              $ref: '#/components/schemas/GetInfoRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetInfoResponse"
+              examples:
+                successful:
+                  $ref: "#/components/examples/GetInfoContentResponseExample"
+                accessTokenInvalid:
+                  $ref: "#/components/examples/AccessTokenInvalidResponseExample"
+                accessTokenExpired:
+                  $ref: "#/components/examples/AccessTokenExpiredResponseExample"
+                accessTokenMissmatch:
+                  $ref: "#/components/examples/AccessTokenMissmatchResponseExample"
+                 
