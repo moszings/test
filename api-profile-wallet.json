@@ -347,6 +347,96 @@
         "schema": {
           "type": "string"
         }
+      },
+      "reqDtm": {
+        "name": "reqDtm",
+        "in": "query",
+        "required": false,
+        "description": "reqDtm",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "reqBy": {
+        "name": "reqBy",
+        "in": "query",
+        "required": false,
+        "description": "reqBy",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "service": {
+        "name": "service",
+        "in": "query",
+        "required": false,
+        "description": "service",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "sofType": {
+        "name": "sofType",
+        "in": "query",
+        "required": false,
+        "description": "sofType",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "cardNo": {
+        "name": "cardNo",
+        "in": "query",
+        "required": false,
+        "description": "cardNo",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "ip": {
+        "name": "ip",
+        "in": "query",
+        "required": false,
+        "description": "ip",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "txnRefID": {
+        "name": "txnRefID",
+        "in": "query",
+        "required": false,
+        "description": "txnRefID",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "citizenId": {
+        "name": "citizenId",
+        "in": "query",
+        "required": true,
+        "description": "citizenId",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "token": {
+        "name": "token",
+        "in": "query",
+        "required": true,
+        "description": "token",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "walletId": {
+        "name": "walletId",
+        "in": "query",
+        "required": true,
+        "description": "walletId",
+        "schema": {
+          "type": "string"
+        }
       }
     }
   },
@@ -364,6 +454,33 @@
           },
           {
             "$ref": "#/components/parameters/reqChannel"
+          },
+          {
+            "$ref": "#/components/parameters/reqDtm"
+          },
+          {
+            "$ref": "#/components/parameters/reqBy"
+          },
+          {
+            "$ref": "#/components/parameters/service"
+          },
+          {
+            "$ref": "#/components/parameters/sofType"
+          },
+          {
+            "$ref": "#/components/parameters/cardNo"
+          },
+          {
+            "$ref": "#/components/parameters/ip"
+          },
+          {
+            "$ref": "#/components/parameters/txnRefID"
+          },
+          {
+            "$ref": "#/components/parameters/citizenId"
+          },
+          {
+            "$ref": "#/components/parameters/token"
           }
         ],
         "requestBody": {
@@ -416,6 +533,38 @@
         ],
         "summary": "Profile service",
         "description": "Profile service",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/reqID"
+          },
+          {
+            "$ref": "#/components/parameters/reqChannel"
+          },
+          {
+            "$ref": "#/components/parameters/reqDtm"
+          },
+          {
+            "$ref": "#/components/parameters/reqBy"
+          },
+          {
+            "$ref": "#/components/parameters/service"
+          },
+          {
+            "$ref": "#/components/parameters/sofType"
+          },
+          {
+            "$ref": "#/components/parameters/cardNo"
+          },
+          {
+            "$ref": "#/components/parameters/ip"
+          },
+          {
+            "$ref": "#/components/parameters/txnRefID"
+          },
+          {
+            "$ref": "#/components/parameters/walletId"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -466,6 +615,38 @@
         ],
         "summary": "Profile service",
         "description": "Check Cbs Cif and Dipchip Profile",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/reqID"
+          },
+          {
+            "$ref": "#/components/parameters/reqChannel"
+          },
+          {
+            "$ref": "#/components/parameters/reqDtm"
+          },
+          {
+            "$ref": "#/components/parameters/reqBy"
+          },
+          {
+            "$ref": "#/components/parameters/service"
+          },
+          {
+            "$ref": "#/components/parameters/sofType"
+          },
+          {
+            "$ref": "#/components/parameters/cardNo"
+          },
+          {
+            "$ref": "#/components/parameters/ip"
+          },
+          {
+            "$ref": "#/components/parameters/txnRefID"
+          },
+          {
+            "$ref": "#/components/parameters/citizenId"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
