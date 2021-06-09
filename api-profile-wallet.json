@@ -1,0 +1,590 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api Profile Wallet",
+    "description": "An example API documentation for Api Profile Wallet.\n",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://www.uat-inno.ktb.co.th/paotang/v3/wallet/profile"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "BaseHeaderRequest": {
+        "type": "object",
+        "properties": {
+          "reqID": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "reqChannel": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "reqDtm": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "reqBy": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "service": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "sofType": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "cardNo": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ip": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "txnRefID": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        }
+      },
+      "BaseHeaderResponse": {
+        "type": "object",
+        "properties": {
+          "reqID": {
+            "type": "string",
+            "example": ""
+          },
+          "reqDtm": {
+            "type": "string",
+            "example": ""
+          },
+          "txnRefID": {
+            "type": "string",
+            "example": ""
+          },
+          "service": {
+            "type": "string",
+            "example": ""
+          },
+          "statusCd": {
+            "type": "string",
+            "example": "0000"
+          },
+          "statusDesc": {
+            "type": "string",
+            "example": "Success"
+          }
+        }
+      },
+      "DeviceRequest": {
+        "type": "object",
+        "properties": {
+          "citizenId": {
+            "type": "string",
+            "description": "Mandatory = Y",
+            "example": "1234567890123"
+          },
+          "token": {
+            "type": "string",
+            "description": "Mandatory = Y",
+            "example": "1A2bwekf3032kfewv"
+          }
+        }
+      },
+      "DeviceResponse": {
+        "type": "string",
+        "example": null
+      },
+      "ProfileRequest": {
+        "type": "object",
+        "properties": {
+          "walletId": {
+            "type": "string",
+            "description": "Mandatory = Y",
+            "example": "123456789012345"
+          }
+        }
+      },
+      "ProfileResponse": {
+        "type": "object",
+        "properties": {
+          "walletId": {
+            "type": "string",
+            "example": "123456789012345"
+          },
+          "displayName": {
+            "type": "string",
+            "example": "สมชาย สวัสดี"
+          },
+          "acctName": {
+            "type": "string",
+            "example": "abc"
+          },
+          "acctStatus": {
+            "type": "string",
+            "example": "0"
+          },
+          "accstatDesc": {
+            "type": "string",
+            "example": "Active"
+          },
+          "primaryCif": {
+            "type": "string",
+            "example": "995000000004"
+          },
+          "acctId": {
+            "type": "string",
+            "example": "880009286121"
+          },
+          "acctType": {
+            "type": "string",
+            "example": "1503"
+          },
+          "curCode": {
+            "type": "string",
+            "example": "THB"
+          },
+          "availBalAmt": {
+            "type": "string",
+            "example": "15412.13"
+          },
+          "ledgerBalAmt": {
+            "type": "string",
+            "example": "15412.13"
+          },
+          "natId": {
+            "type": "string",
+            "example": ""
+          },
+          "taxId": {
+            "type": "string",
+            "example": ""
+          },
+          "anyIdInfo": {
+            "type": "object",
+            "properties": {
+              "acctId": {
+                "type": "string",
+                "example": "880009286121"
+              },
+              "acctName": {
+                "type": "string",
+                "example": "abc"
+              },
+              "anyId": {
+                "type": "string",
+                "example": "123456789012345"
+              },
+              "displayName": {
+                "type": "string",
+                "example": "สมชาย สวัสดี"
+              },
+              "anyIdType": {
+                "type": "string",
+                "example": "03"
+              }
+            }
+          }
+        }
+      },
+      "GetWalletPdmoProfileRequest": {
+        "type": "object",
+        "properties": {
+          "citizenId": {
+            "type": "string",
+            "description": "Mandatory = Y",
+            "example": "1234567890123"
+          }
+        }
+      },
+      "GetWalletPdmoProfileResponse": {
+        "type": "object",
+        "properties": {
+          "citizenId": {
+            "type": "string",
+            "example": "1234567890123"
+          },
+          "walletId": {
+            "type": "string",
+            "example": "1234567890123"
+          },
+          "walletIdHash": {
+            "type": "string",
+            "example": "13de7e6f3e2460946bbd02f954369f3c52ce3e1b015c93767e395a13e1a7a576"
+          },
+          "walletCifNo": {
+            "type": "string",
+            "example": "19"
+          },
+          "walletAccount": {
+            "type": "string",
+            "example": "123456789012"
+          },
+          "firstname": {
+            "type": "string",
+            "example": "ชยวัฒน์"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "สุนทรรักษ์"
+          },
+          "dipchipStatus": {
+            "type": "boolean",
+            "example": true
+          },
+          "formVerifiedStatus": {
+            "type": "boolean",
+            "example": true
+          },
+          "faceVerifiedStatus": {
+            "type": "boolean",
+            "example": true
+          },
+          "termsAcceptedStatus": {
+            "type": "boolean",
+            "example": true
+          },
+          "byPassFlag": {
+            "type": "boolean",
+            "example": true
+          },
+          "cashLimitPerDay": {
+            "type": "double",
+            "example": 5000000
+          },
+          "cashLimitPerTimes": {
+            "type": "double",
+            "example": 2000000
+          },
+          "upgradeStatus": {
+            "type": "boolean",
+            "example": true
+          },
+          "ialTwoPointThreeStatus": {
+            "type": "boolean",
+            "example": true
+          },
+          "birthDate": {
+            "type": "string",
+            "example": "1961-06-21"
+          },
+          "riskProfileDate": {
+            "type": "string",
+            "example": "2021-05-20T11:10:03.201209"
+          },
+          "requireRiskAssessmentFlag": {
+            "type": "string",
+            "example": "N"
+          },
+          "cbsCif": {
+            "type": "string",
+            "example": "34177350"
+          },
+          "lgUpgradeStatus": {
+            "type": "boolean",
+            "example": false
+          },
+          "score": {
+            "type": "string",
+            "example": "0|3|2|4|2|4|4|2|1|1|2|"
+          },
+          "dipchipFlag": {
+            "type": "boolean",
+            "example": true
+          },
+          "dipchipDate": {
+            "type": "string",
+            "example": "2021-05-20T12:10:03.201209"
+          }
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "ERROR",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "Describes the error in a human-readable format.",
+                  "type": "string",
+                  "example": "Permission denied."
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR0001": {
+        "description": "INVALID_REQUEST",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "Request is invalid.",
+                  "type": "string",
+                  "example": "INVALID_REQUEST."
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR0024": {
+        "description": "PDMO_WALLET_PROFILE_NOT_FOUND",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "Not found wallet id.",
+                  "type": "string",
+                  "example": "PDMO_WALLET_PROFILE_NOT_FOUND."
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR9999": {
+        "description": "SYSTEM_ERROR",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "The system is error.",
+                  "type": "string",
+                  "example": "SYSTEM_ERROR."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "authentication": {
+        "name": "authentication",
+        "in": "query",
+        "required": false,
+        "description": "authentication",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "paths": {
+    "https://www.uat-inno.ktb.co.th/paotang/v3/wallet/profile/device": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "summary": "Device service",
+        "description": "Device service",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/authentication"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "headerReq": {
+                    "$ref": "#/components/schemas/BaseHeaderRequest"
+                  },
+                  "content": {
+                    "$ref": "#/components/schemas/DeviceRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "headerReq": {
+                      "$ref": "#/components/schemas/BaseHeaderResponse"
+                    },
+                    "content": {
+                      "$ref": "#/components/schemas/DeviceResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/error"
+          },
+          "ERR0001": {
+            "$ref": "#/components/responses/ERR0001"
+          },
+          "ERR9999": {
+            "$ref": "#/components/responses/ERR9999"
+          }
+        }
+      }
+    },
+    "https://www.uat-inno.ktb.co.th/paotang/v3/wallet/profile/detail": {
+      "post": {
+        "tags": [
+          "detail"
+        ],
+        "summary": "Profile service",
+        "description": "Profile service",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/authentication"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "headerReq": {
+                    "$ref": "#/components/schemas/BaseHeaderRequest"
+                  },
+                  "content": {
+                    "$ref": "#/components/schemas/ProfileRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "headerReq": {
+                      "$ref": "#/components/schemas/BaseHeaderResponse"
+                    },
+                    "content": {
+                      "$ref": "#/components/schemas/ProfileResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/error"
+          },
+          "ERR0001": {
+            "$ref": "#/components/responses/ERR0001"
+          },
+          "ERR0024": {
+            "$ref": "#/components/responses/ERR0024"
+          },
+          "ERR9999": {
+            "$ref": "#/components/responses/ERR9999"
+          }
+        }
+      }
+    },
+    "https://www.uat-inno.ktb.co.th/paotang/v3/wallet/profile/lookup": {
+      "post": {
+        "tags": [
+          "lookup"
+        ],
+        "summary": "Profile service",
+        "description": "Check Cbs Cif and Dipchip Profile",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/authentication"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "headerReq": {
+                    "$ref": "#/components/schemas/BaseHeaderRequest"
+                  },
+                  "content": {
+                    "$ref": "#/components/schemas/GetWalletPdmoProfileRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "headerReq": {
+                      "$ref": "#/components/schemas/BaseHeaderResponse"
+                    },
+                    "content": {
+                      "$ref": "#/components/schemas/GetWalletPdmoProfileResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/error"
+          },
+          "ERR0001": {
+            "$ref": "#/components/responses/ERR0001"
+          },
+          "ERR0024": {
+            "$ref": "#/components/responses/ERR0024"
+          },
+          "ERR9999": {
+            "$ref": "#/components/responses/ERR9999"
+          }
+        }
+      }
+    }
+  }
+}
