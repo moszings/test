@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Api Profile Wallet",
-    "description": "An example API documentation for Api Profile Wallet.\n<img src=\"/Users/ponlaphat.sukuwit/Desktop/pic1.png\" alt=\"Girl in a jacket\" width=\"1000\" height=\"600\">\n",
+    "description": "An example API documentation for Api Profile Wallet. <img src="/Users/ponlaphat.sukuwit/Desktop/pic1.png" alt="Girl in a jacket" width="1000" height="600">",
     "version": "1.0"
   },
   "servers": [
