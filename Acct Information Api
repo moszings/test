@@ -1,0 +1,278 @@
+openapi: 3.0.0
+info:
+  title: Acct Information Api
+  description: |
+    An example API documentation for Acct Information Api.</p>
+  version: '1.0'
+servers:
+  - url: 'https://www.uat-inno.ktb.co.th/paotang/v1/customer/acct-infomation'
+    description: 'SIT'
+  - url: 'https://www.uat-inno.ktb.co.th/paotang/v1/customer/acct-infomation'
+    description: 'UAT'
+components:
+  schemas:
+    BaseHeaderRequest:
+      type: object
+      properties:
+        reqID:
+          type: string
+          nullable: true
+          example: ''
+        reqChannel:
+          type: string
+          nullable: true
+          example: ''
+        reqDtm:
+          type: string
+          nullable: true
+          example: ''
+        reqBy:
+          type: string
+          nullable: true
+          example: ''
+        service:
+          type: string
+          nullable: true
+          example: ''
+        sofType:
+          type: string
+          nullable: true
+          example: ''
+        cardNo:
+          type: string
+          nullable: true
+          example: ''
+        ip:
+          type: string
+          nullable: true
+          example: ''
+        txnRefID:
+          type: string
+          nullable: true
+          example: ''
+    BaseHeaderResponse:
+      type: object
+      properties:
+        reqID:
+          type: string
+          example: ''
+        reqDtm:
+          type: string
+          example: ''
+        txnRefID:
+          type: string
+          example: ''
+        service:
+          type: string
+          example: ''
+        statusCd:
+          type: string
+          example: '0000'
+        statusDesc:
+          type: string
+          example: Success
+    InquiryAccountDetailRequest:
+      type: object
+      properties:
+        accountList:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountList'
+        appId:
+          type: string
+          description: ''
+          example: 'uywHqMJbvMeZbyqCnWKFtq190iNe1mkRw4sv1oK1BaslcfJxgLBkkDai'
+        userId:
+          type: string
+          description: ''
+          example: '0649365922'
+        uuId:
+          type: string
+          description: ''
+          example: 'b88bbc06-9719-49ff-85d3-bc2e31d6e765'
+    AccountList:
+      type: object
+      properties:
+        accountNo:
+          type: string
+          example: '0000715441'
+    InquiryAccountDetailResponse:
+      type: object
+      properties:
+        accountList:
+            type: array
+            items:
+              type: object
+              properties:
+                accountNo:
+                  type: string
+                  example: '6700143861'
+                thaiName:
+                  type: string
+                  example: 'นาย วา บัตร'
+                engName:
+                  type: string
+                  example: 'va card'
+                currencyCode:
+                  type: string
+                  example: 'THB'
+                payCondition:
+                  type: string
+                  example: ''
+                commentOAcct:
+                  type: string
+                  example: ''
+                eduLoan:
+                  type: number
+                  example: 0
+                prinRenewOpt:
+                  type: number
+                  example: 0
+                renewTRAcct:
+                  type: string
+                  example: ''
+                intMdtOpt:
+                  type: number
+                  example: 0
+                intMdtTRAcct:
+                  type: string
+                  example: ''
+                dibursementOpt:
+                  type: number
+                  example: 0
+                intTrAcct:
+                  type: string
+                  example: ''
+                accountStatus:
+                  type: number
+                  example: 0
+                accountType:
+                  type: number
+                  example: 2001
+                accountGroup:
+                  type: string
+                  example: 'SAV'
+                branchCd:
+                  type: number
+                  example: 0
+                lastSalaryPaidDt:
+                  type: string
+                  example: ''
+                smsSaleCode:
+                  type: string
+                  example: ''
+                arrPurCd:
+                  type: string
+                  example: ''
+                perConsumpCd:
+                  type: string
+                  example: ''
+                indexCd:
+                  type: string
+                  example: 'SAV001'
+                intSpread:
+                  type: string
+                  example: ''
+                authLimit:
+                  type: double
+                  example: 0.00
+                balAmt:
+                  type: double
+                  example: 106347.92
+                availBalAmt:
+                  type: double
+                  example: 106347.92
+                maximumBal:
+                  type: double
+                  example: 0.00
+                depositAccountType:
+                  type: string
+                  example: ''
+                costCenter:
+                  type: string
+                  example: '200031'
+                totLoanBal:
+                  type: double
+                  example: 0.00
+                cifNo:
+                  type: string
+                  example: '34064639'
+
+  responses:
+    error:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                description: Describes the error in a human-readable format.
+                type: string
+                example: ''
+    ERR0001:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                description: Invalid request message
+                type: string
+                example: 'Invalid request message'
+    ERR9999:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                description: System Error
+                type: string
+                example: 'System Error'
+  parameters:
+    authentication:
+      name: authentication
+      in: query
+      required: false
+      description: authentication
+      schema:
+        type: string
+
+paths:
+  /inquiry/account-detail:
+    post:
+      tags:
+        - inquiry/account-detail
+      summary: Get account detail
+      description: Get account detail by account no.
+      parameters:
+        - $ref: '#/components/parameters/authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                headerReq:
+                  $ref: '#/components/schemas/BaseHeaderRequest'
+                content:
+                  $ref: '#/components/schemas/InquiryAccountDetailRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  headerReq:
+                    $ref: '#/components/schemas/BaseHeaderResponse'
+                  content:
+                    $ref: '#/components/schemas/InquiryAccountDetailResponse'
+        '500':
+          $ref: '#/components/responses/error'
+        'ERR0001':
+          $ref: '#/components/responses/ERR0001'
+        'ERR9999':
+          $ref: '#/components/responses/ERR9999'
