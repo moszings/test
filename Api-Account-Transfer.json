@@ -1,0 +1,717 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api Account Transfer",
+    "description": "An example API documentation for Api Account Transfer.</p>\n",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://www.uat-inno.ktb.co.th/paotang/v1/financial/transfer-account",
+      "description": "SIT"
+    },
+    {
+      "url": "https://www.uat-inno.ktb.co.th/paotang/v1/financial/transfer-account",
+      "description": "UAT"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "BaseHeaderRequest": {
+        "type": "object",
+        "properties": {
+          "reqID": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "reqChannel": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "reqDtm": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "reqBy": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "service": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "sofType": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "cardNo": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ip": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "txnRefID": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        }
+      },
+      "BaseHeaderResponse": {
+        "type": "object",
+        "properties": {
+          "reqID": {
+            "type": "string",
+            "example": ""
+          },
+          "reqDtm": {
+            "type": "string",
+            "example": ""
+          },
+          "txnRefID": {
+            "type": "string",
+            "example": ""
+          },
+          "service": {
+            "type": "string",
+            "example": ""
+          },
+          "statusCd": {
+            "type": "string",
+            "example": "0000"
+          },
+          "statusDesc": {
+            "type": "string",
+            "example": "Success"
+          }
+        }
+      },
+      "SubmitRequest": {
+        "type": "object",
+        "properties": {
+          "fromWalletId": {
+            "type": "string",
+            "description": "",
+            "example": "006880088851134"
+          },
+          "toBankCode": {
+            "type": "string",
+            "description": "",
+            "example": "006"
+          },
+          "toAccountNo": {
+            "type": "string",
+            "description": "",
+            "example": "0000663344"
+          },
+          "amount": {
+            "type": "number",
+            "description": "",
+            "example": 83700
+          },
+          "scanQRFlag": {
+            "type": "boolean",
+            "description": "",
+            "example": false
+          },
+          "citizenId": {
+            "type": "string",
+            "description": "",
+            "example": "1349900625779"
+          },
+          "appId": {
+            "type": "string",
+            "description": "",
+            "example": "B9kKpKapZOZWEwZMksEcesUea47o3SIkQfkmMJLTglj206OU93NokZrZ"
+          },
+          "userId": {
+            "type": "string",
+            "description": "",
+            "example": "0973546615"
+          },
+          "uuId": {
+            "type": "string",
+            "description": "",
+            "example": "9f943305-52b5-4e64-aa24-13c0fb9b730e"
+          }
+        }
+      },
+      "SubmitResponse": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "",
+            "example": "155-45bdb318-017c-4c85-9a9f-9ad70bd5e064"
+          },
+          "toAcctName": {
+            "type": "string",
+            "description": "",
+            "example": "Suwatida Keawkong"
+          },
+          "toAcctId": {
+            "type": "string",
+            "description": "",
+            "example": "0000663344"
+          },
+          "toDisplayName": {
+            "type": "string",
+            "description": "",
+            "example": "น.ส. สุวธิดา แก้วคง"
+          },
+          "toBankCode": {
+            "type": "string",
+            "description": "",
+            "example": "006"
+          },
+          "amount": {
+            "type": "String",
+            "description": "",
+            "example": "83700.00"
+          },
+          "fee": {
+            "type": "String",
+            "description": "",
+            "example": "0"
+          },
+          "securityMethod": {
+            "type": "string",
+            "description": "",
+            "example": "F"
+          }
+        }
+      },
+      "LookupRequest": {
+        "type": "object",
+        "properties": {
+          "fromWalletId": {
+            "type": "string",
+            "description": "",
+            "example": "006880088851134"
+          },
+          "toBankCode": {
+            "type": "string",
+            "description": "",
+            "example": "006"
+          },
+          "toAccountNo": {
+            "type": "string",
+            "description": "",
+            "example": "0000663344"
+          },
+          "citizenId": {
+            "type": "string",
+            "description": "",
+            "example": "1349900625779"
+          },
+          "appId": {
+            "type": "string",
+            "description": "",
+            "example": "B9kKpKapZOZWEwZMksEcesUea47o3SIkQfkmMJLTglj206OU93NokZrZ"
+          },
+          "userId": {
+            "type": "string",
+            "description": "",
+            "example": "0973546615"
+          },
+          "uuId": {
+            "type": "string",
+            "description": "",
+            "example": "9f943305-52b5-4e64-aa24-13c0fb9b730e"
+          }
+        }
+      },
+      "LookupResponse": {
+        "type": "object",
+        "properties": {
+          "toAcctId": {
+            "type": "string",
+            "description": "",
+            "example": "0000663344"
+          },
+          "toAcctName": {
+            "type": "string",
+            "description": "",
+            "example": "Suwatida Keawkong"
+          },
+          "toDisplayName": {
+            "type": "string",
+            "description": "",
+            "example": "น.ส. สุวธิดา แก้วคง"
+          },
+          "toBankCode": {
+            "type": "string",
+            "description": "",
+            "example": "006"
+          }
+        }
+      },
+      "ConfirmRequest": {
+        "type": "object",
+        "properties": {
+          "fromWalletId": {
+            "type": "string",
+            "description": "",
+            "example": "006880088851134"
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "",
+            "example": "155-45bdb318-017c-4c85-9a9f-9ad70bd5e064"
+          },
+          "appId": {
+            "type": "string",
+            "description": "",
+            "example": "B9kKpKapZOZWEwZMksEcesUea47o3SIkQfkmMJLTglj206OU93NokZrZ"
+          },
+          "userId": {
+            "type": "string",
+            "description": "",
+            "example": "0973546615"
+          },
+          "uuId": {
+            "type": "string",
+            "description": "",
+            "example": "9f943305-52b5-4e64-aa24-13c0fb9b730e"
+          }
+        }
+      },
+      "ConfirmResponse": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "",
+            "example": "155-45bdb318-017c-4c85-9a9f-9ad70bd5e064"
+          },
+          "toAcctName": {
+            "type": "string",
+            "description": "",
+            "example": "Suwatida Keawkong"
+          },
+          "toBankCode": {
+            "type": "string",
+            "description": "",
+            "example": "006"
+          },
+          "amount": {
+            "type": "String",
+            "description": "",
+            "example": "83700.00"
+          },
+          "fee": {
+            "type": "String",
+            "description": "",
+            "example": "0"
+          },
+          "financialTxnRef": {
+            "type": "string",
+            "description": "",
+            "example": "26459745-1ac2-4f28-9040-16cbfe99d50e"
+          },
+          "availBalAmt": {
+            "type": "string",
+            "description": "",
+            "example": ""
+          },
+          "ledgerAmt": {
+            "type": "string",
+            "description": "",
+            "example": ""
+          },
+          "toDisplayName": {
+            "type": "string",
+            "description": "",
+            "example": "น.ส. สุวธิดา แก้วคง"
+          },
+          "financialTxnDateTime": {
+            "type": "string",
+            "description": "",
+            "example": "2021-06-04T14:47:34"
+          }
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "Describes the error in a human-readable format.",
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR9999": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "System Error",
+                  "type": "string",
+                  "example": "System Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR0027": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "cash over limit",
+                  "type": "string",
+                  "example": "cash over limit"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR0030": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "Not enough money",
+                  "type": "string",
+                  "example": "Not enough money"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR0004": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "Account invalid status",
+                  "type": "string",
+                  "example": "Account invalid status"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR0028": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "can't transfer to auther account",
+                  "type": "string",
+                  "example": "can't transfer to auther account"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR0032": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "Amount must be greater than zero",
+                  "type": "string",
+                  "example": "Amount must be greater than zero"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ERR0034": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "description": "Account is not ktb",
+                  "type": "string",
+                  "example": "Account is not ktb"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "authentication": {
+        "name": "authentication",
+        "in": "query",
+        "required": false,
+        "description": "authentication",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/submit": {
+      "post": {
+        "tags": [
+          "submit"
+        ],
+        "summary": "Api account transfer",
+        "description": "Api account transfer (Submit)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/authentication"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "headerReq": {
+                    "$ref": "#/components/schemas/BaseHeaderRequest"
+                  },
+                  "content": {
+                    "$ref": "#/components/schemas/SubmitRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "headerReq": {
+                      "$ref": "#/components/schemas/BaseHeaderResponse"
+                    },
+                    "content": {
+                      "$ref": "#/components/schemas/SubmitResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/error"
+          },
+          "ERR9999": {
+            "$ref": "#/components/responses/ERR9999"
+          },
+          "ERR0027": {
+            "$ref": "#/components/responses/ERR0027"
+          },
+          "ERR0030": {
+            "$ref": "#/components/responses/ERR0030"
+          },
+          "ERR0004": {
+            "$ref": "#/components/responses/ERR0004"
+          },
+          "ERR0028": {
+            "$ref": "#/components/responses/ERR0028"
+          },
+          "ERR0032": {
+            "$ref": "#/components/responses/ERR0032"
+          },
+          "ERR0034": {
+            "$ref": "#/components/responses/ERR0034"
+          }
+        }
+      }
+    },
+    "/lookup": {
+      "post": {
+        "tags": [
+          "lookup"
+        ],
+        "summary": "Api account transfer",
+        "description": "Api account transfer (Lookup)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/authentication"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "headerReq": {
+                    "$ref": "#/components/schemas/BaseHeaderRequest"
+                  },
+                  "content": {
+                    "$ref": "#/components/schemas/LookupRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "headerReq": {
+                      "$ref": "#/components/schemas/BaseHeaderResponse"
+                    },
+                    "content": {
+                      "$ref": "#/components/schemas/LookupResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/error"
+          },
+          "ERR9999": {
+            "$ref": "#/components/responses/ERR9999"
+          },
+          "ERR0027": {
+            "$ref": "#/components/responses/ERR0027"
+          },
+          "ERR0030": {
+            "$ref": "#/components/responses/ERR0030"
+          },
+          "ERR0004": {
+            "$ref": "#/components/responses/ERR0004"
+          },
+          "ERR0028": {
+            "$ref": "#/components/responses/ERR0028"
+          },
+          "ERR0032": {
+            "$ref": "#/components/responses/ERR0032"
+          },
+          "ERR0034": {
+            "$ref": "#/components/responses/ERR0034"
+          }
+        }
+      }
+    },
+    "/confirm": {
+      "post": {
+        "tags": [
+          "confirm"
+        ],
+        "summary": "Api account transfer",
+        "description": "Api account transfer (Confirm)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/authentication"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "headerReq": {
+                    "$ref": "#/components/schemas/BaseHeaderRequest"
+                  },
+                  "content": {
+                    "$ref": "#/components/schemas/ConfirmRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "headerReq": {
+                      "$ref": "#/components/schemas/BaseHeaderResponse"
+                    },
+                    "content": {
+                      "$ref": "#/components/schemas/ConfirmResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/error"
+          },
+          "ERR9999": {
+            "$ref": "#/components/responses/ERR9999"
+          },
+          "ERR0027": {
+            "$ref": "#/components/responses/ERR0027"
+          },
+          "ERR0030": {
+            "$ref": "#/components/responses/ERR0030"
+          },
+          "ERR0004": {
+            "$ref": "#/components/responses/ERR0004"
+          },
+          "ERR0028": {
+            "$ref": "#/components/responses/ERR0028"
+          },
+          "ERR0032": {
+            "$ref": "#/components/responses/ERR0032"
+          },
+          "ERR0034": {
+            "$ref": "#/components/responses/ERR0034"
+          }
+        }
+      }
+    }
+  }
+}
